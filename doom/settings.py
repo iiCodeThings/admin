@@ -19,12 +19,6 @@ class SysConfig(object):
             for k, v in conf.items():
                 setattr(self, k, v)
 
-    ALI_SMS_ACCESS_KEY = 'LTAI4GAZQW662brMVDMAW2s3'
-    ALI_SMS_ACCESS_SECRET = 'rYlkD0aFwb5z96gG42phhelN4t9WdP'
-
-    POINTS_VS_RMB = 1
-    TOTAL_PERCENT = 100
-
 
 def get_config():
     return SysConfig("doom/settings.yaml")
