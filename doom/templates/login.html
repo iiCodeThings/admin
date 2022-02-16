@@ -1,0 +1,34 @@
+{% set pageId = 'auth' %}
+{% extends 'base.html' %}
+{% block title %}登录{% endblock %}
+{% block body %}
+  <div class="login-box">
+    <div class="login-logo">
+      <b>{{ sitename }}</b>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+      <p class="login-box-msg">管理系统</p>
+
+      <form action="/admin/login" method="post">
+        <div class="form-group has-feedback">
+          <input name="mobile" type="text" class="form-control" placeholder="钉钉电话">
+          <span class="fa fa-mobile form-control-feedback"></span>
+          <div class="help-block">&nbsp;</div>
+        </div>
+        <div class="form-group has-feedback">
+          <input name="pwd" type="password" class="form-control" placeholder="密码">
+          <span class="fa fa-lock form-control-feedback"></span>
+          <div class="help-block">&nbsp;</div>
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn btn-submit btn-primary btn-block">
+            登录
+            <span class="label label-success hide">操作成功</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+

@@ -1,0 +1,87 @@
+{% set pageId = 'dashboard' %}
+{% extends 'base.html' %}
+{% block title %}控制台{% endblock %}
+{% block body %}
+  <section class="content-header">
+    <h1>
+      控制台
+    </h1>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box box-warning collapsed-box">
+          <div class="box-header with-border">
+            <h3 class="box-title">条件筛选</h3>
+            <div class="box-tools pull-right">
+              <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+            </div>
+          </div>
+          <div class="box-body">
+            <form class="container-fluid" action="?" method="get">
+              <div class="row">
+                <div class="col-xs-3">
+                  <div class="form-group">
+                    <input name="name" type="text" class="form-control" placeholder="名称">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6">
+                  <button type="submit" class="btn btn-primary">查询</button>
+                  <a href="?" class="btn btn-default">清除条件</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="box box-primary">
+          <div class="box-header">
+            <h3 class="box-title">商品列表</h3>
+          </div>
+          <div class="box-body">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th class="text-center">名称</th>
+                  <th class="text-center">单价(分)</th>
+                  <th class="text-center">描述</th>
+                  <th class="text-center">海报</th>
+                  <th class="text-center">状态</th>
+                  <th class="text-center">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in goods %}
+                <tr>
+                  <td class="text-center">{{ item.name }}</td>
+                  <td class="text-center">{{ item.price }}分</td>
+                  <td class="text-center">{{ item.description }}</td>
+                  <td class="text-center">
+                    <img src="{{item.poster}}" alt="{{ item.name }}" style="width: 10%;">
+                  </td>
+                  <td class="text-center">
+                    {% if item.active %}上架{% else %}下架{% endif %}
+                  </td>
+                  <td class="text-center">
+                    {% if item.active %}
+                      <button><a href="/admin/goods/offline?id={{item.id}}">下架</a></button>
+                    {% else %}
+                      <button><a href="/admin/goods/online?id={{item.id}}">上架</a></button>
+                    {% endif %}
+                      <button><a href="/admin/goods/edit?id={{item.id}}">编辑</a></button>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

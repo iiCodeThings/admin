@@ -1,0 +1,14 @@
+__pycache__
+migrations
+nohup.out
+.vscode
+uploads/*.png
+logs
+*.pid
+*.pyc
+.venv
+doom/settings.yaml
+deploy/settings_dev.yaml
+uwsgi_emperor/miniapp-store-backend.log
+uwsgi_emperor/supervisor.log
+doom/static/*.xlsx

@@ -1,0 +1,5 @@
+JWT_AUTH: "--jwt-auth--"
+JWT_SECRET_KEY: "--jwt-secret--key--"
+SECRET_KEY: "---session-secret-key-----"
+REDIS: redis://127.0.0.1:6379/2
+SQLALCHEMY_DATABASE_URI: mysql+mysqlconnector://user:password@localhost/miniapp_store?charset=utf8mb4

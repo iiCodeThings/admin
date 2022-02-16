@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html id="{{pageId}}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{% block title %}{% endblock %} | {{sitename}} {{domain}}</title>
+
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta http-equiv="cache-control" content="no-cache">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/libs/AdminLTE/bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/libs/font-awesome/css/font-awesome.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/libs/AdminLTE/dist/css/AdminLTE.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/libs/AdminLTE/dist/css/skins/_all-skins.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/all.css') }}">
+  
+  <!--[if lt IE 9]>
+  <script src="{{ url_for('static', filename='assets/libs/html5shiv/dist/html5shiv.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/libs/respond/dest/respond.min.js') }}"></script>
+  <![endif]-->
+
+  {% if customHeaderJS %}
+    {{customHeaderJS}}
+  {% endif %}
+</head>
+
+{% if pageId == 'auth' %}
+  <body class="hold-transition login-page">
+{% else %}
+
+  <body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+      <header class="main-header">
+        <a href="/admin/dashboard" class="logo">
+          <span class="logo-mini">
+            LTE
+          </span>
+          <span class="logo-lg">
+            <b>管理后台</b>
+          </span>
+        </a>
+        <nav class="navbar navbar-static-top">
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">            
+              <li class="dropdown user user-menu">
+                <a href="#" data-toggle="dropdown">
+                  <span class="hidden-xs">{%if user_session %} {{user_session['username']}} {% endif %}</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      {% include 'menus.html' %}
+      
+      <div class="content-wrapper">
+{% endif %}
+        {% block body %}{% endblock %}
+
+{% if pageId != 'auth' %}
+      </div>
+    </div>
+    <footer class="main-footer">
+      <div class="pull-right hidden-xs">
+          <b>Version</b> 1.0.0
+        </div>
+        <strong>Copyright &copy; {{year}} <a href="#">{{sitename}}</a>.</strong> All rights
+        reserved.
+    </footer>
+{% endif %}
+
+    <script src="{{ url_for('static', filename='assets/libs/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/AdminLTE/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/AdminLTE/plugins/fastclick/fastclick.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/clipboard.min.js') }}"></script>
+    {% if libs %}
+      {{libs}}
+    {% endif %}
+
+    <script src="{{ url_for('static', filename='assets/libs/AdminLTE/dist/js/app.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/module/base.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/all.js') }}"></script>
+    {% if js %}
+      {{js}}
+    {% endif %}
+  </body>
+</html>

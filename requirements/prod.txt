@@ -1,0 +1,12 @@
+Flask==2.0.1
+Flask-Migrate==3.1.0
+Flask-SQLAlchemy==2.5.1
+mysql-connector-python==8.0.26
+PyYAML==5.4.1
+redis==4.0.2
+aliyun-python-sdk-core==2.13.35
+Flask-Login==0.5.0
+xlsxwriter
+xlrd
+wechatpy
+oss2
